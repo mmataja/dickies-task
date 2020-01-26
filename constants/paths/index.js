@@ -1,3 +1,3 @@
-module.exports = {
-  WEBSITE_STATISTICS: '/api/website-statistics/:id',
-}
+const api = require('./api');
+
+module.exports.api = api;
