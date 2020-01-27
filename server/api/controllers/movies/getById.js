@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
       res.status(500).end();
     }
 
-    res.status(200).json(movie).end();
+    return res.status(200).json(movie).end();
   } catch (error) {
     return res.status(500).end();
   }

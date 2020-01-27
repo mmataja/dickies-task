@@ -4,4 +4,7 @@ const { movies } = require('../../controllers');
 
 module.exports = (router) => {
   router.get(paths.api.v1.MOVIES, movies.get);
+  router.post(paths.api.v1.MOVIES, movies.create);
+
+  router.get(paths.api.v1.MOVIES_ID, movies.getById);
 }
