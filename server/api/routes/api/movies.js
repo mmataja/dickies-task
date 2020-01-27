@@ -7,4 +7,5 @@ module.exports = (router) => {
   router.post(paths.api.v1.MOVIES, movies.create);
 
   router.get(paths.api.v1.MOVIES_ID, movies.getById);
+  router.put(paths.api.v1.MOVIES_ID, movies.updateById);
 }

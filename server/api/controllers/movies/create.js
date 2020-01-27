@@ -15,7 +15,7 @@ module.exports = async (req, res) => {
       return res.status(500).json({ message: 'Something went wrong' }).end();
     }
 
-    return res.status(200).json({ message: 'Movie successfully added.'}).end();
+    return res.status(200).json({ message: 'Movie successfully added.' }).end();
   } catch (error) {
     return res.status(500).end();
   }
