@@ -1,9 +1,9 @@
-import Card from './Card';
+import CardItem from './CardItem';
 import Form from './Form';
 import List from './List';
 
 export default {
-  Card,
+  CardItem,
   Form,
   List,
 }
