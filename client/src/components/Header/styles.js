@@ -6,7 +6,8 @@ const styles = makeStyles(theme => ({
   headerItemsContainer: {
     width: '100%',
     display: 'flex',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
 
   buttonTextColor: {
