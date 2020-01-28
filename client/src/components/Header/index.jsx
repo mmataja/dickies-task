@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import {
   AppBar,
   Button,
@@ -21,13 +21,17 @@ const Header = () => {
             <Typography variant="h6" color="inherit" noWrap>
               Movies Collection
             </Typography>
-            <div >
-              <Button href="" className={classes.listButton}>
-                Movies
-              </Button>
-              <Button href="" className={classes.addButton}>
-                ADD Movie
-              </Button>
+            <div>
+              <Link to='/movies'>
+                <Button href="" className={classes.listButton}>
+                  Movies
+                </Button>
+              </Link>
+              <Link to='/movies/new'>
+                <Button href="" className={classes.addButton}>
+                  ADD Movie
+                </Button>
+              </Link>
             </div>
           </div>
         </Toolbar>
