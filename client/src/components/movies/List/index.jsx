@@ -1,12 +1,8 @@
 import React from 'react';
 import {
-  AppBar,
-  Button,
   Container,
-  CssBaseline,
   Grid,
   Link,
-  Toolbar,
   Typography,
 } from '@material-ui/core';
 
@@ -34,14 +30,6 @@ const List = () => {
 
   return (
     <React.Fragment>
-      <CssBaseline />
-      <AppBar position="relative">
-        <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
-            Movies Collection
-          </Typography>
-        </Toolbar>
-      </AppBar>
       <main>
         {/* Hero unit */}
         {/* <div className={classes.heroContent}>
