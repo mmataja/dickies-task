@@ -1,6 +1,8 @@
 import React from 'react';
 import {
   AppBar,
+  Button,
+  Grid,
   Toolbar,
   Typography,
 } from '@material-ui/core';
@@ -14,9 +16,19 @@ const Header = () => {
     <React.Fragment>
       <AppBar position="fixed">
         <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
-            Movies Collection
-          </Typography>
+          <div className={classes.headerItemsContainer}>
+            <Typography variant="h6" color="inherit" noWrap>
+              Movies Collection
+            </Typography>
+            <div >
+              <Button href="" className={classes.listButton}>
+                Movies
+              </Button>
+              <Button href="" className={classes.addButton}>
+                ADD Movie
+              </Button>
+            </div>
+          </div>
         </Toolbar>
       </AppBar>
       <div className={classes.offset} />
