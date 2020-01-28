@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   Button,
   Card,
@@ -15,6 +16,7 @@ const CardItem = ({
   genre,
   rating,
   explicit,
+  id
 }) => {
   const classes = styles();
 
@@ -41,12 +43,19 @@ const CardItem = ({
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" color="primary">
-            View
-          </Button>
-          <Button size="small" color="primary">
-            Edit
-          </Button>
+          <Link to={{
+            pathname: `/movies/${id}`,
+            state: {
+              title,
+              genre,
+              rating,
+              explicit,
+            }
+          }}>
+            <Button size="small" color="primary">
+              Edit
+            </Button>
+          </Link>
         </CardActions>
       </Card>
     </React.Fragment>

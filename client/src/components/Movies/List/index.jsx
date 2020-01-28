@@ -38,6 +38,7 @@ const List = () => {
                   genre={movie.genre}
                   rating={movie.rating}
                   explicit={movie.explicit}
+                  id={movie.id}
                 />
               </Grid>
               ))

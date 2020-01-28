@@ -10,6 +10,7 @@ function App() {
       <Switch>
         <Route exact path={'/movies'} component={Movies.List} />
         <Route exact path={'/movies/new'} component={Movies.Form} />
+        <Route exact path={'/movies/:id'} component={Movies.Form} />
       </Switch>
     </Router>
   );
