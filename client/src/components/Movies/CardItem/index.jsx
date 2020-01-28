@@ -10,7 +10,12 @@ import {
 
 import styles from './styles';
 
-const CardItem = () => {
+const CardItem = ({
+  title,
+  genre,
+  rating,
+  explicit,
+}) => {
   const classes = styles();
 
   return (
@@ -23,10 +28,16 @@ const CardItem = () => {
         />
         <CardContent className={classes.cardContent}>
           <Typography gutterBottom variant="h5" component="h2">
-            Movie Title
+            {title}
           </Typography>
-          <Typography>
-            This is a media card. You can use this section to describe the content.
+          <Typography variant="button">
+            Rating: <Typography>{rating} / 10</Typography>
+          </Typography>
+          <Typography variant="button">
+            Genre: <Typography>{genre}</Typography> 
+          </Typography>
+          <Typography variant="button" color="error">
+            {explicit ? 'explicit' : null}
           </Typography>
         </CardContent>
         <CardActions>

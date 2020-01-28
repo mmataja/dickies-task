@@ -3,7 +3,6 @@ import { Link, withRouter } from 'react-router-dom';
 import {
   AppBar,
   Button,
-  Grid,
   Toolbar,
   Typography,
 } from '@material-ui/core';
