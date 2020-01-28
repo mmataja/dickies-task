@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import {
   AppBar,
   Button,
@@ -36,4 +37,4 @@ const Header = () => {
   )
 }
 
-export default Header;
+export default withRouter(Header);
