@@ -15,38 +15,7 @@ import {
 
 import styles from './styles';
 
-const ratings = [
-  {
-    value: 1,
-  },
-  {
-    value: 2,
-  },
-  {
-    value: 3,
-  },
-  {
-    value: 4,
-  },
-  {
-    value: 5,
-  },
-  {
-    value: 6,
-  },
-  {
-    value: 7,
-  },
-  {
-    value: 8,
-  },
-  {
-    value: 9,
-  },
-  {
-    value: 10,
-  },
-]
+const ratings = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const Form = (props) => {
   const classes = styles();
@@ -108,8 +77,8 @@ const Form = (props) => {
                 className={classes.textFieldMargin}
               >
                 {ratings.map(rating => (
-                  <MenuItem key={rating.value} value={rating.value}>
-                    {rating.value}
+                  <MenuItem key={rating} value={rating}>
+                    {rating}
                   </MenuItem>
                 ))}
               </TextField>
@@ -126,7 +95,7 @@ const Form = (props) => {
                 </RadioGroup>
               </FormControl>
               <Button size="small" color="primary" variant="outlined" type="submit" className={classes.button}>
-                Update
+                {isNewMovie ? "ADD" : "UPDATE"}
               </Button>
             </form>
           </CardContent>
