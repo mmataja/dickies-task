@@ -49,9 +49,17 @@ const Form = (props) => {
       const addMovie = await axios.post("http://localhost:3000/api/v1/movies", {
         ...formData,
       });
-
-      console.log(addMovie);
+    return console.log(addMovie);
     }
+
+    const { id } = props.match.params;
+    console.log("JE DODES OVDI", id);
+
+    const updateMovie = await axios.put(`http://localhost:3000/api/v1/movies/${id}`, {
+      ...formData,
+    });
+
+    console.log("update MOVIE", updateMovie);
   }
 
   return (
@@ -106,6 +114,13 @@ const Form = (props) => {
               <Button size="small" color="primary" variant="outlined" type="submit" className={classes.button}>
                 {isNewMovie ? "ADD" : "UPDATE"}
               </Button>
+              {!isNewMovie
+                ? <Button size="small" color="secondary" variant="outlined" className={classes.button}>
+                    DELETE
+                  </Button>
+                : null
+              }
+
             </form>
           </CardContent>
         </Card>
