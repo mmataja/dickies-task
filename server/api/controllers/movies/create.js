@@ -12,7 +12,7 @@ module.exports = async (req, res) => {
     });
 
     if (!createdMovie) {
-      return res.status(500).json({ message: 'Something went wrong' }).end();
+      return res.status(500).json({ message: 'Invalid data provided.' }).end();
     }
 
     return res.status(200).json({ message: 'Movie successfully added.' }).end();
