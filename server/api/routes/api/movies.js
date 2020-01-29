@@ -1,4 +1,4 @@
-const { paths } = require('../../../../common/constants');
+const { paths } = require('../../../constants');
 
 const { movies } = require('../../controllers');
 
