@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import {
-  Grid,
+  Button,
   Card,
   CardContent,
-  Button,
-  TextField,
+  CircularProgress,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Grid,
   MenuItem,
   Radio,
   RadioGroup,
-  FormControlLabel,
-  FormControl,
-  FormLabel,
+  TextField,
 } from '@material-ui/core';
 
 import styles from './styles';
@@ -28,6 +29,7 @@ const Form = (props) => {
     explicit: '',
   });
   const [isNewMovie, setIsNewMovie] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const { id } = props.match.params
@@ -45,21 +47,42 @@ const Form = (props) => {
   const submitMovie = async (event) => {
     event.preventDefault();
 
+    setIsLoading(true);
+
     if (isNewMovie) {
       const addMovie = await axios.post("http://localhost:3000/api/v1/movies", {
         ...formData,
       });
+
+      if (addMovie.status === 200) {
+        return setIsLoading(false);
+      }
+    /* TODO:
+      if success return success message otherwise error message
+    */
     return console.log(addMovie);
     }
 
     const { id } = props.match.params;
-    console.log("JE DODES OVDI", id);
 
     const updateMovie = await axios.put(`http://localhost:3000/api/v1/movies/${id}`, {
       ...formData,
     });
 
-    console.log("update MOVIE", updateMovie);
+
+
+    /* TODO:
+      if success return success message otherwise error message
+    */
+    return console.log("update MOVIE", updateMovie);
+  }
+
+  const deleteMovie = async () => {
+    const { id } = props.match.params;
+
+    const deletedMovie = await axios.delete(`http://localhost:3000/api/v1/movies/${id}`);
+
+    return console.log("DELETED MOVIE", deletedMovie);
   }
 
   return (
@@ -115,13 +138,16 @@ const Form = (props) => {
                 {isNewMovie ? "ADD" : "UPDATE"}
               </Button>
               {!isNewMovie
-                ? <Button size="small" color="secondary" variant="outlined" className={classes.button}>
+                ? <Button size="small" color="secondary" variant="outlined" onClick={deleteMovie} className={classes.button}>
                     DELETE
                   </Button>
                 : null
               }
-
             </form>
+            {isLoading
+              ? <CircularProgress />
+              : null
+            }
           </CardContent>
         </Card>
       </Grid>
