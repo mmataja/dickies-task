@@ -51,7 +51,7 @@ const CardItem = ({
               rating,
               explicit: JSON.stringify(explicit),
             }
-          }}>
+          }} className={classes.textDecorationNone}>
             <Button size="small" color="primary">
               Edit
             </Button>

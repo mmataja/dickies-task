@@ -14,6 +14,11 @@ const styles = makeStyles(theme => ({
     color: theme.palette.primary,
   },
 
+  headerTitle: {
+    textDecoration: 'none',
+    color: 'white'
+  },
+
   listButton: {
     color: 'white',
     marginRight: theme.spacing(4),

@@ -6,14 +6,21 @@ const styles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
   },
+
   cardMedia: {
     paddingTop: '56.25%', // 16:9
   },
+
   cardContent: {
     flexGrow: 1,
     display: 'flex',
     flexDirection: 'column',
   },
+
+  textDecorationNone: {
+    textDecoration: 'none',
+  },
+
 }));
 
 export default styles;

@@ -17,9 +17,11 @@ const Header = () => {
       <AppBar position="fixed">
         <Toolbar>
           <div className={classes.headerItemsContainer}>
-            <Typography variant="h6" color="inherit" noWrap>
-              Movies Collection
-            </Typography>
+            <Link to="/" className={classes.headerTitle}>
+              <Typography variant="h6" color="inherit" noWrap>
+                Movies Collection
+              </Typography>
+            </Link>
             <div>
               <Link to='/movies' className={classes.textDecorationNone}>
                 <Button href="" className={classes.listButton}>
