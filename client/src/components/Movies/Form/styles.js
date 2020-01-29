@@ -23,9 +23,15 @@ const styles = makeStyles(theme => ({
     flexDirection: 'column',
   },
 
+  marginTop3: {
+    marginTop: theme.spacing(3),
+  },
+
   gridContainer: {
     paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
   }
 }));
 

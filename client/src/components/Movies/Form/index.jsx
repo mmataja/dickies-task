@@ -17,28 +17,42 @@ import {
 
 import styles from './styles';
 
+import AlertPopup from '../../AlertPopup';
+
 const ratings = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const Form = (props) => {
   const classes = styles();
+  const { id } = props.match.params;
 
-  const [formData, setFormData] = useState({
-    name: '',
-    genre: '',
-    rating: '',
-    explicit: '',
-  });
-  const [isNewMovie, setIsNewMovie] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [isNewMovie, setIsNewMovie] = useState(true);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
+  const [formData, setFormData] = useState({
+    explicit: '',
+    genre: '',
+    name: '',
+    rating: '',
+  });
 
   useEffect(() => {
-    const { id } = props.match.params
     if (id) {
       const movieData = props.location.state;
       setFormData({ ...movieData });
       setIsNewMovie(false);
     }
-  }, [])
+
+    return () => {
+      setFormData({
+        explicit: '',
+        genre: '',
+        name: '',
+        rating: '',
+      });
+      setIsNewMovie(true);
+    }
+  }, [id])
 
   const handleChange = inputValue => event => {
     setFormData({...formData, [inputValue]: event.target.value});
@@ -54,13 +68,7 @@ const Form = (props) => {
         ...formData,
       });
 
-      if (addMovie.status === 200) {
-        return setIsLoading(false);
-      }
-    /* TODO:
-      if success return success message otherwise error message
-    */
-    return console.log(addMovie);
+      return handleResponseStatus(addMovie.status);
     }
 
     const { id } = props.match.params;
@@ -68,13 +76,8 @@ const Form = (props) => {
     const updateMovie = await axios.put(`http://localhost:3000/api/v1/movies/${id}`, {
       ...formData,
     });
-
-
-
-    /* TODO:
-      if success return success message otherwise error message
-    */
-    return console.log("update MOVIE", updateMovie);
+    
+    return handleResponseStatus(updateMovie.status);
   }
 
   const deleteMovie = async () => {
@@ -85,9 +88,30 @@ const Form = (props) => {
     return console.log("DELETED MOVIE", deletedMovie);
   }
 
+  const handleResponseStatus = (status) => {
+    if (status === 200) {
+      setIsSuccess(true);
+    } else {
+      setIsSuccess(false);
+    }
+
+    setIsLoading(false);
+    setShowAlert(true);
+    
+    return setTimeout(() => {
+      setShowAlert(false);
+      setFormData({
+        explicit: '',
+        genre: '',
+        name: '',
+        rating: '',
+      })
+    }, 3000);
+  }
+
   return (
     <React.Fragment>
-      <Grid container justify="center" alignContent="stretch" className={classes.gridContainer}>
+      <Grid container justify="center" alignItems="center" alignContent="stretch" className={classes.gridContainer}>
         <Card className={classes.card}>
           <CardContent className={classes.cardContent}>
             <form autoComplete="off" className={classes.formItems} onSubmit={submitMovie}>
@@ -144,12 +168,18 @@ const Form = (props) => {
                 : null
               }
             </form>
-            {isLoading
-              ? <CircularProgress />
-              : null
-            }
           </CardContent>
         </Card>
+        {isLoading
+          ? <CircularProgress className={classes.marginTop3} />
+          : null
+        }
+        {showAlert 
+          ? <Grid item className={classes.marginTop3}>
+              <AlertPopup isSuccess={isSuccess} />
+            </Grid>
+          : null
+        }
       </Grid>
     </React.Fragment>
   )
