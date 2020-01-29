@@ -13,7 +13,6 @@ const List = () => {
   useEffect(() => {
     axios.get('http://localhost:3000/api/v1/movies')
       .then((response) => {
-        console.log(response)
         if (movies === null) {
           return setMovies(response.data);
         }
@@ -33,8 +32,8 @@ const List = () => {
             {movies !== null
               ? movies.map(movie => (
               <Grid item key={movie.id} xs={12} sm={6} md={4}>
-                <CardItem 
-                  title={movie.name}
+                <CardItem
+                  name={movie.name}
                   genre={movie.genre}
                   rating={movie.rating}
                   explicit={movie.explicit}

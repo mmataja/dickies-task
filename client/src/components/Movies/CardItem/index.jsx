@@ -12,7 +12,7 @@ import {
 import styles from './styles';
 
 const CardItem = ({
-  title,
+  name,
   genre,
   rating,
   explicit,
@@ -30,13 +30,13 @@ const CardItem = ({
         />
         <CardContent className={classes.cardContent}>
           <Typography gutterBottom variant="h5" component="h2">
-            {title}
+            {name}
           </Typography>
           <Typography variant="button">
             Rating: <Typography>{rating} / 10</Typography>
           </Typography>
           <Typography variant="button">
-            Genre: <Typography>{genre}</Typography> 
+            Genre: <Typography>{genre}</Typography>
           </Typography>
           <Typography variant="button" color="error">
             {explicit ? 'explicit' : null}
@@ -46,10 +46,10 @@ const CardItem = ({
           <Link to={{
             pathname: `/movies/${id}`,
             state: {
-              title,
+              name,
               genre,
               rating,
-              explicit,
+              explicit: JSON.stringify(explicit),
             }
           }}>
             <Button size="small" color="primary">

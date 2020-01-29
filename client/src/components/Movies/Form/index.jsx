@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import {
   Grid,
   Card,
@@ -21,7 +22,7 @@ const Form = (props) => {
   const classes = styles();
 
   const [formData, setFormData] = useState({
-    title: '',
+    name: '',
     genre: '',
     rating: '',
     explicit: '',
@@ -42,7 +43,15 @@ const Form = (props) => {
   }
 
   const submitMovie = async (event) => {
+    event.preventDefault();
 
+    if (isNewMovie) {
+      const addMovie = await axios.post("http://localhost:3000/api/v1/movies", {
+        ...formData,
+      });
+
+      console.log(addMovie);
+    }
   }
 
   return (
@@ -52,11 +61,11 @@ const Form = (props) => {
           <CardContent className={classes.cardContent}>
             <form autoComplete="off" className={classes.formItems} onSubmit={submitMovie}>
               <TextField
-                id="title"
-                label="Movie Title"
+                id="name"
+                label="Movie Name"
                 required={true}
-                onChange={handleChange('title')}
-                value={formData.title}
+                onChange={handleChange('name')}
+                value={formData.name}
                 className={classes.textFieldMargin}
               />
               <TextField
