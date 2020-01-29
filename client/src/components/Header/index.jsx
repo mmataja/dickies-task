@@ -21,12 +21,12 @@ const Header = () => {
               Movies Collection
             </Typography>
             <div>
-              <Link to='/movies'>
+              <Link to='/movies' className={classes.textDecorationNone}>
                 <Button href="" className={classes.listButton}>
                   Movies
                 </Button>
               </Link>
-              <Link to='/movies/new'>
+              <Link to='/movies/new' className={classes.textDecorationNone}>
                 <Button href="" className={classes.addButton}>
                   ADD Movie
                 </Button>

@@ -22,6 +22,10 @@ const styles = makeStyles(theme => ({
   addButton: {
     backgroundColor: 'white',
     padding: theme.spacing(1),
+  },
+
+  textDecorationNone: {
+    textDecoration: 'none',
   }
 
 }));
