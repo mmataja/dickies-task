@@ -14,7 +14,6 @@ import {
   Radio,
   RadioGroup,
   TextField,
-  Popover,
 } from '@material-ui/core';
 
 import styles from './styles';
