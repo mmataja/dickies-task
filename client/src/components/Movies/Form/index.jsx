@@ -66,7 +66,7 @@ const Form = (props) => {
     setIsLoading(true);
 
     if (isNewMovie) {
-      const addMovie = await axios.post("http://localhost:3000/api/v1/movies", {
+      const addMovie = await axios.post("http://localhost:4040/api/v1/movies", {
         ...formData,
       });
 
@@ -75,7 +75,7 @@ const Form = (props) => {
 
     const { id } = props.match.params;
 
-    const updateMovie = await axios.put(`http://localhost:3000/api/v1/movies/${id}`, {
+    const updateMovie = await axios.put(`http://localhost:4040/api/v1/movies/${id}`, {
       ...formData,
     });
     
@@ -85,7 +85,7 @@ const Form = (props) => {
   const deleteMovie = async () => {
     const { id } = props.match.params;
 
-    const deletedMovie = await axios.delete(`http://localhost:3000/api/v1/movies/${id}`);
+    const deletedMovie = await axios.delete(`http://localhost:4040/api/v1/movies/${id}`);
 
     return handleResponseStatus(deletedMovie.status);
   }

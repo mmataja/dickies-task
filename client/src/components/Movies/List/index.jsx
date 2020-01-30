@@ -11,7 +11,7 @@ const List = () => {
   const [movies, setMovies] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/v1/movies')
+    axios.get('http://localhost:4040/api/v1/movies')
       .then((response) => {
         if (movies === null) {
           return setMovies(response.data);
