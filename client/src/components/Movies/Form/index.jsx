@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 import {
   Button,
   Card,
@@ -13,6 +14,7 @@ import {
   Radio,
   RadioGroup,
   TextField,
+  Popover,
 } from '@material-ui/core';
 
 import styles from './styles';
@@ -23,6 +25,7 @@ const ratings = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const Form = (props) => {
   const classes = styles();
+  const history = useHistory();
   const { id } = props.match.params;
 
   const [isLoading, setIsLoading] = useState(false);
@@ -85,7 +88,7 @@ const Form = (props) => {
 
     const deletedMovie = await axios.delete(`http://localhost:3000/api/v1/movies/${id}`);
 
-    return console.log("DELETED MOVIE", deletedMovie);
+    return handleResponseStatus(deletedMovie.status);
   }
 
   const handleResponseStatus = (status) => {
@@ -95,18 +98,13 @@ const Form = (props) => {
       setIsSuccess(false);
     }
 
-    setIsLoading(false);
     setShowAlert(true);
+    setIsLoading(false);
     
     return setTimeout(() => {
       setShowAlert(false);
-      setFormData({
-        explicit: '',
-        genre: '',
-        name: '',
-        rating: '',
-      })
-    }, 3000);
+      history.push('/movies');
+    }, 2000);
   }
 
   return (
