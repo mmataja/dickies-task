@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './styles';
 
@@ -12,6 +13,10 @@ const AlertPopup = ({ isSuccess }) => {
       </div>
     </React.Fragment>
   )
-}
+};
+
+AlertPopup.propTypes = {
+  isSuccess: PropTypes.bool.isRequired,
+};
 
 export default AlertPopup;

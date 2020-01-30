@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import {
   Button,
@@ -60,6 +61,14 @@ const CardItem = ({
       </Card>
     </React.Fragment>
   )
+};
+
+CardItem.propTypes = {
+  name: PropTypes.string.isRequired,
+  genre: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+  explicit: PropTypes.bool.isRequired,
+  id: PropTypes.number.isRequired,
 }
 
 export default CardItem;

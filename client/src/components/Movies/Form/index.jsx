@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import {
   Button,
@@ -178,6 +179,16 @@ const Form = ({
       </Grid>
     </React.Fragment>
   )
-}
+};
+
+Form.propTypes = {
+  state: PropTypes.shape({
+    name: PropTypes.string,
+    genre: PropTypes.string,
+    rating: PropTypes.number,
+    explicit: PropTypes.bool,
+  }),
+  id: PropTypes.number,
+};
 
 export default Form;
