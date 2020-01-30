@@ -15,21 +15,21 @@ git clone https://github.com/mmataja/dickies-task.git
 
 - FRONTEND
 ```
-cd client
+cd client/
 npm install
 npm start
 ```
 
 - BACKEND
 ```
-cd server
+cd server/
 npm install
 ```
 Setup PostgreSQL database and set configuration settings for connection in .env file
 
 To migrate tables and seed some data into database run following commands
 ```
-cd api
+cd api/
 ../node_modules/knex/bin/cli.js migrate:latest
 ../node_modules/knex/bin/cli.js seed:run
 ```
