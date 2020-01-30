@@ -1,10 +1,16 @@
+const result = require('dotenv').config();
+
+if (result.error) {
+  throw result.error;
+}
+
 const bodyParser = require('body-parser');
 const express = require('express');
 const http = require('http');
 
 const { routes } = require('./api');
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4040;
 const app = express();
 
 app.use(bodyParser.json());
