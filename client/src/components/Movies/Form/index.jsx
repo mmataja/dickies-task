@@ -22,10 +22,12 @@ import AlertPopup from '../../AlertPopup';
 
 const ratings = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-const Form = (props) => {
+const Form = ({ 
+  match: { params: { id }},
+  location: { state },
+}) => {
   const classes = styles();
   const history = useHistory();
-  const { id } = props.match.params;
 
   const [isLoading, setIsLoading] = useState(false);
   const [isNewMovie, setIsNewMovie] = useState(true);
@@ -40,7 +42,7 @@ const Form = (props) => {
 
   useEffect(() => {
     if (id) {
-      const movieData = props.location.state;
+      const movieData = state;
       setFormData({ ...movieData });
       setIsNewMovie(false);
     }
@@ -73,8 +75,6 @@ const Form = (props) => {
       return handleResponseStatus(addMovie.status);
     }
 
-    const { id } = props.match.params;
-
     const updateMovie = await axios.put(`http://localhost:4040/api/v1/movies/${id}`, {
       ...formData,
     });
@@ -83,8 +83,6 @@ const Form = (props) => {
   }
 
   const deleteMovie = async () => {
-    const { id } = props.match.params;
-
     const deletedMovie = await axios.delete(`http://localhost:4040/api/v1/movies/${id}`);
 
     return handleResponseStatus(deletedMovie.status);
